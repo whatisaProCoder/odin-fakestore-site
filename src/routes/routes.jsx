@@ -18,7 +18,7 @@ export const routes = [
       { path: "cart", element: <Cart /> },
       { path: "wishlist", element: <Wishlist /> },
       { path: "product/:id", element: <Product /> },
-      { path: "search/:query", element: <Search /> },
+      { path: "search", element: <Search /> },
     ],
   },
 ];

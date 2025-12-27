@@ -3,5 +3,6 @@ export const routeToSection = [
   { path: "/shop", section: "shop" },
   { path: "/product", section: "shop" },
   { path: "/cart", section: "cart" },
-  { path: "/wishlist", section: "wishlist" }
+  { path: "/wishlist", section: "wishlist" },
+  { path: "/search", section: "shop" }
 ];
