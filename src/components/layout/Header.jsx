@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import { useMediaQuery } from "react-responsive";
 
 function Header() {
-  const isPhone = useMediaQuery({ maxWidth: 700 });
+  const isPhone = useMediaQuery({ maxWidth: 750 });
 
   return (
     <div
@@ -19,7 +19,7 @@ function Header() {
         className="flex items-center gap-4"
         style={{ flexDirection: isPhone ? "column" : "row" }}
       >
-        <Brand fontSize={isPhone ? "1.5rem" : "1.125rem"} />
+        <Brand fontSize={isPhone ? "1.5rem" : "1.25rem"} />
         <SearchField />
       </div>
       <NavBar />

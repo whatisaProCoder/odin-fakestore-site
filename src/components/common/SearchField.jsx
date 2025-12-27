@@ -4,12 +4,11 @@ import searchIcon from "../../assets/icons/search-icon.svg";
 import { useMediaQuery } from "react-responsive";
 
 function SearchField({ value, setValue, trigger }) {
-  const isPhone = useMediaQuery({ maxWidth: 700 });
+  const isPhone = useMediaQuery({ maxWidth: 750 });
   return (
     <div
-      className="flex flex-row items-center border border-[#32333fd0] bg-[#22262d] overflow-hidden"
+      className="flex flex-row items-center border-2 border-[#3d3e49d0] rounded-[1.25rem] bg-[#22262d] overflow-hidden"
       style={{
-        borderRadius: isPhone ? "1rem" : "0.25rem",
         marginLeft: isPhone ? "0" : "0.5rem",
       }}
     >
@@ -23,7 +22,7 @@ function SearchField({ value, setValue, trigger }) {
       />
       <button
         onClick={trigger}
-        className="bg-[#32333f] h-10 w-10 pl-0.5 flex flex-row justify-center items-center transition-colors hover:bg-[#2c2d39]"
+        className="bg-[#32333f] h-10 w-12 pl-0.5 flex flex-row justify-center items-center transition-colors hover:bg-[#3d3e49d0]"
       >
         <img src={searchIcon} className="h-5" />
       </button>

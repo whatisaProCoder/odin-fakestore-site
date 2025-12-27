@@ -8,9 +8,9 @@ import { useNavigate } from "react-router";
 import { useMediaQuery } from "react-responsive";
 
 function NavBar() {
-  const isTablet = useMediaQuery({ minWidth: 700, maxWidth: 900 });
+  const isTablet = useMediaQuery({ minWidth: 750, maxWidth: 900 });
 
-  const isSmallPhone = useMediaQuery({ maxWidth: 500 });
+  const isSmallPhone = useMediaQuery({ maxWidth: 550 });
 
   const navigate = useNavigate();
 
