@@ -1,5 +1,6 @@
 import Brand from "../home/Brand";
 import SearchField from "../common/SearchField";
+import NavBar from "./NavBar";
 
 function Header() {
   return (
@@ -8,6 +9,7 @@ function Header() {
         <Brand fontSize="1.125rem" />
         <SearchField />
       </div>
+      <NavBar />
     </div>
   );
 }

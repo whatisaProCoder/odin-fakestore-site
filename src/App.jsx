@@ -1,11 +1,12 @@
 import "./App.css";
 import Header from "./components/layout/Header";
+import { ActivePageProvider } from "./context/ActivePageContext";
 
 function App() {
   return (
-    <div>
+    <ActivePageProvider>
       <Header />
-    </div>
+    </ActivePageProvider>
   );
 }
 

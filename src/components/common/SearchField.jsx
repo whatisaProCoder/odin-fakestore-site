@@ -4,7 +4,7 @@ import searchIcon from "../../assets/icons/search-icon.svg";
 
 function SearchField({ value, setValue, trigger }) {
   return (
-    <div className="flex flex-row items-center ml-2 my-3 border border-[#1B1C28] bg-[#0F1114] rounded-sm overflow-hidden">
+    <div className="flex flex-row items-center ml-2 border border-[#1B1C28] bg-[#0F1114] rounded-sm overflow-hidden">
       <input
         type="text"
         placeholder="Search"
