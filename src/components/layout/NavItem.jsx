@@ -1,7 +1,17 @@
+import { useMediaQuery } from "react-responsive";
+
 function NavItem({ children, active, onClick }) {
+  const isNotDesktop = useMediaQuery({ maxWidth: 900 });
+
   return (
     <div className="flex flex-col select-none" onClick={onClick}>
-      <div className="h-14 px-1 flex flex-row items-center gap-2 inter font-medium text-[0.9rem]">
+      <div
+        className="h-14 px-1 flex flex-row items-center gap-2 inter font-medium text-[0.9rem]"
+        style={{
+          paddingLeft: isNotDesktop ? "0.75rem" : "0.25rem",
+          paddingRight: isNotDesktop ? "0.75rem" : "0.25rem",
+        }}
+      >
         {children}
       </div>
       <div

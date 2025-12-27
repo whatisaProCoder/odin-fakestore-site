@@ -1,10 +1,15 @@
 import PropTypes from "prop-types";
 
 import searchIcon from "../../assets/icons/search-icon.svg";
+import { useMediaQuery } from "react-responsive";
 
 function SearchField({ value, setValue, trigger }) {
+  const isPhone = useMediaQuery({ maxWidth: 700 });
   return (
-    <div className="flex flex-row items-center ml-2 border border-[#1B1C28] bg-[#0F1114] rounded-sm overflow-hidden">
+    <div
+      className="flex flex-row items-center ml-2 border border-[#1B1C28] bg-[#0F1114] overflow-hidden"
+      style={{ borderRadius: isPhone ? "1rem" : "0.25rem" }}
+    >
       <input
         type="text"
         placeholder="Search"

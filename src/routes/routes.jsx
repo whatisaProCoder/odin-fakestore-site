@@ -11,7 +11,6 @@ export const routes = [
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />,
     children: [
       { index: true, element: <Home /> },
       { path: "shop", element: <Shop /> },
@@ -19,6 +18,7 @@ export const routes = [
       { path: "wishlist", element: <Wishlist /> },
       { path: "product/:id", element: <Product /> },
       { path: "search", element: <Search /> },
+      { path: "*", element: <Error /> },
     ],
   },
 ];
