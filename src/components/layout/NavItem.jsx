@@ -6,10 +6,10 @@ function NavItem({ children, active, onClick }) {
   return (
     <div className="flex flex-col select-none" onClick={onClick}>
       <div
-        className="h-14 px-1 flex flex-row items-center gap-2 inter font-medium text-[0.9rem]"
+        className="h-16 mt-1 flex flex-row items-center gap-2.5 inter text-[1rem]"
         style={{
-          paddingLeft: isNotDesktop ? "0.75rem" : "0.25rem",
-          paddingRight: isNotDesktop ? "0.75rem" : "0.25rem",
+          paddingLeft: isNotDesktop ? "1rem" : "0.5rem",
+          paddingRight: isNotDesktop ? "1rem" : "0.5rem",
         }}
       >
         {children}

@@ -11,9 +11,9 @@ function Header() {
       style={{
         flexDirection: isPhone ? "column" : "row",
         paddingTop: isPhone ? "1.5rem" : "0",
-        gap: isPhone ? "1rem" : "0",
+        gap: isPhone ? "0.375rem" : "0",
       }}
-      className="sticky top-0 left-0 right-0 flex justify-between items-center px-5 bg-[#131518] border-b border-[#0B0E13]"
+      className="sticky top-0 left-0 right-0 flex justify-between items-center px-5 bg-[#1b1d20] border-b border-[#32333fb5] drop-shadow-md"
     >
       <div
         className="flex items-center gap-4"
