@@ -6,7 +6,7 @@ function Brand({ fontSize = "2rem" }) {
   };
 
   const getDotHeight = () => {
-    const newValue = extractFontValue() / 3;
+    const newValue = extractFontValue() / 3.7;
     return newValue + "rem";
   };
 
