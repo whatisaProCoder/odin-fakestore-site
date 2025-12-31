@@ -1,6 +1,6 @@
 import exampleProductImage from "../../assets/images/example-product.jpeg";
 import shoeExample from "../../assets/images/shoe-example.webp";
-import miscExample from "../../assets/images/misc-example.jpeg";
+import miscExample from "../../assets/images/misc-example.webp";
 import furnitureExample from "../../assets/images/furniture-example.jpg";
 import electronicsExample from "../../assets/images/electronics-example.jpg";
 
