@@ -2,7 +2,7 @@ import exampleProductImage from "../../assets/images/example-product.jpeg";
 import shoeExample from "../../assets/images/shoe-example.webp";
 import miscExample from "../../assets/images/misc-example.jpeg";
 import furnitureExample from "../../assets/images/furniture-example.jpg";
-import electronicsExample from "../../assets/images/electronics-example.webp";
+import electronicsExample from "../../assets/images/electronics-example.jpg";
 
 import Carousel from "../common/Carousel";
 
