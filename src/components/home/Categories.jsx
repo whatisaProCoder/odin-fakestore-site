@@ -16,6 +16,7 @@ function Categories() {
         <div className="mt-10 grid grid-cols-6 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-4">
           {TopCategories.map((categoryObject) => (
             <CategoryCard
+              key={categoryObject.id}
               categoryImage={categoryObject.img}
               name={categoryObject.name}
             />
