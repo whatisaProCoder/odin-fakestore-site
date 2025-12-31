@@ -13,7 +13,7 @@ function Categories() {
             Explore More
           </div>
         </div>
-        <div className="mt-10 grid grid-cols-6 max-lg:grid-cols-3 max-sm:grid-cols-2 bg-[#32333fb5] gap-px">
+        <div className="mt-10 grid grid-cols-6 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-4">
           {TopCategories.map((categoryObject) => (
             <CategoryCard
               categoryImage={categoryObject.img}
