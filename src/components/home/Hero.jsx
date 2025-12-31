@@ -1,4 +1,4 @@
-import exampleProductImage from "../../assets/images/example-product.jpeg";
+import clothesExample from "../../assets/images/clothes-example.jpeg";
 import shoeExample from "../../assets/images/shoe-example.webp";
 import miscExample from "../../assets/images/misc-example.webp";
 import furnitureExample from "../../assets/images/furniture-example.jpg";
@@ -16,11 +16,11 @@ function Hero() {
   const isTablet = useMediaQuery({ maxWidth: 900 });
 
   const itemArray = [
-    { id: 0, name: "Shoe", src: shoeExample },
-    { id: 1, name: "Furniture", src: furnitureExample },
     { id: 2, name: "Electronics", src: electronicsExample },
-    { id: 3, name: "Miscellanious", src: miscExample },
-    { id: 4, name: "Clothes", src: exampleProductImage },
+    { id: 4, name: "Clothes", src: clothesExample },
+    { id: 0, name: "Footwear", src: shoeExample },
+    { id: 1, name: "Furniture", src: furnitureExample },
+    { id: 3, name: "Stationary", src: miscExample },
   ];
 
   const { itemIndex, setItemIndex } = useCarousel({ itemArray, delay: 1700 });
