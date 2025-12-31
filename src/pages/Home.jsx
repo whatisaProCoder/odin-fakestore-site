@@ -1,3 +1,4 @@
+import CallToAction from "../components/home/CallToAction";
 import Categories from "../components/home/Categories";
 import ExclusiveDeals from "../components/home/ExclusiveDeals";
 import Features from "../components/home/Features";
@@ -10,6 +11,7 @@ function Home() {
       <Categories />
       <ExclusiveDeals />
       <Features />
+      <CallToAction />
     </>
   );
 }
