@@ -1,7 +1,6 @@
 import { Outlet } from "react-router";
 import "./App.css";
 import Header from "./components/layout/Header";
-import DummyJSON from "./api/DummyJSON";
 
 function App() {
   return (
