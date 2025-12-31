@@ -3,7 +3,7 @@ import CategoryCard from "./CategoryCard";
 
 function Categories() {
   return (
-    <div className="py-10 flex flex-row justify-center items-center">
+    <div className="py-16 max-sm:py-10 flex flex-row justify-center items-center">
       <div className="max-w-350 px-20 max-sm:px-10 w-full">
         <div className="flex flex-row items-center justify-between">
           <div className="poppins text-xl font-semibold max-sm:text-sm">
@@ -13,7 +13,7 @@ function Categories() {
             Explore More
           </div>
         </div>
-        <div className="mt-10 grid grid-cols-6 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-4">
+        <div className="mt-10 mb-5 grid grid-cols-6 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-4">
           {TopCategories.map((categoryObject) => (
             <CategoryCard
               key={categoryObject.id}

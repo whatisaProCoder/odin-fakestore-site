@@ -1,6 +1,6 @@
 import shirtExample from "../../assets/images/clothes-example.jpeg";
 
-function ProductCard() {
+function ExclusiveDealsCard() {
   return (
     <div className="bg-[#1b1d20] flex flex-col p-2 border border-[#32333fb5] rounded-md max-sm:rounded-xl transition-all hover:drop-shadow-xl hover:-translate-y-1">
       <img src={shirtExample} className="rounded-xs max-sm:rounded-md" />
@@ -21,4 +21,4 @@ function ProductCard() {
   );
 }
 
-export default ProductCard;
+export default ExclusiveDealsCard;
