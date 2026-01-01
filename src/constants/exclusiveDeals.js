@@ -1,0 +1,1 @@
+export const ExclusiveDealProductIDs = [78, 79, 80, 160]
