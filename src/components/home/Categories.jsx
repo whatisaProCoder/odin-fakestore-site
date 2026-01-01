@@ -9,7 +9,7 @@ function Categories() {
           <div className="poppins text-xl font-semibold max-sm:text-sm">
             Top Categories
           </div>
-          <div className="select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-sm font-medium transition-colors hover:bg-[#1b1d20]">
+          <div className="select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-colors hover:bg-[#1b1d20]">
             Explore More
           </div>
         </div>
