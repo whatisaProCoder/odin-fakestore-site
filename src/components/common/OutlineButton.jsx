@@ -4,7 +4,7 @@ function PrimaryButton({ text, onClick, className }) {
       onClick={onClick}
       className={
         className +
-        " bg-[#2573E9] font-medium poppins text-[0.9rem] max-sm:text-[0.85rem] px-3 py-1 border border-[#115FD5] rounded-md"
+        " text-[#468cf5] font-medium poppins text-md max-sm:text-sm px-3 py-1 border-2 border-[#468cf5] rounded-md"
       }
     >
       {text}

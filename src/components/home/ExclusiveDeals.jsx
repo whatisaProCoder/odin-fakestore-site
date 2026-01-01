@@ -7,8 +7,6 @@ import ExclusiveDealsCard from "./ExclusiveDealsCard";
 function ExclusiveDeals() {
   const { data, loading, error } = useMultipleProducts(ExclusiveDealProductIDs);
 
-  console.log(error);
-
   return (
     <div className="py-16 max-sm:py-10 flex flex-row justify-center items-center bg-[#14161a]">
       <div className="max-w-350 px-20 max-sm:px-10 w-full">

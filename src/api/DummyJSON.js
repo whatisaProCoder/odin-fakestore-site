@@ -1,6 +1,7 @@
+import { productLimitPerPage } from "../constants/productLimitPerPage"
+
 function DummyJSON() {
   const baseURL = "https://dummyjson.com/products"
-  const productLimitPerPage = 16
 
   function getProductByID(id) {
     return new Promise((resolve, reject) => {
