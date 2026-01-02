@@ -13,8 +13,9 @@ function useUserProductDataCollection() {
     return productData;
   }
 
-  const toggleAddToCartState = (productID) => {
-    const productData = getProductData(productID);
+  const toggleAddToCartState = ({ productID }) => {
+    const productData = getProductData({ productID });
+    console.log("toggle function product data: " + productData)
     if (productData) {
       let newUserProductDataCollection = [...userProductDataCollection];
       newUserProductDataCollection.find(
@@ -22,6 +23,7 @@ function useUserProductDataCollection() {
       ).addedToCart = !productData.addedToCart;
       setUserProductDataCollection(newUserProductDataCollection);
     } else {
+      console.log("else running")
       let newUserProductDataCollection = [...userProductDataCollection];
       newUserProductDataCollection.push(
         new UserProductData({
@@ -35,8 +37,8 @@ function useUserProductDataCollection() {
     }
   };
 
-  const toggleWishlistState = (productID) => {
-    const productData = getProductData(productID);
+  const toggleWishlistState = ({ productID }) => {
+    const productData = getProductData({ productID });
     if (productData) {
       let newUserProductDataCollection = [...userProductDataCollection];
       newUserProductDataCollection.find(
@@ -58,7 +60,7 @@ function useUserProductDataCollection() {
   }
 
   const handleCount = ({ productID, minus = false } = {}) => {
-    const productData = getProductData(productID);
+    const productData = getProductData({ productID });
     if (productData) {
       let newUserProductDataCollection = [...userProductDataCollection];
       let newCount = productData.count;
@@ -93,7 +95,9 @@ function useUserProductDataCollection() {
     return userProductDataCollection.filter(product => product.addedToWishlist === true)
   }
 
-  return { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductIDsInCart, getProductIDsInWishlist }
+  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductIDsInCart, getProductIDsInWishlist };
+
+  return { userProductDataCollection, dataCollectionHelperMethods }
 }
 
 export default useUserProductDataCollection;

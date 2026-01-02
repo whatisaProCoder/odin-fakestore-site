@@ -3,99 +3,32 @@ import Counter from "../common/Counter";
 import heartOutlineIcon from "../../assets/icons/heart-outline-icon.svg";
 import heartIcon from "../../assets/icons/heart-icon.svg";
 import AddToCartButton from "../common/AddToCartButton";
-import UserProductData from "../../models/userProductData";
 
 function ProductCard({ productID, image, title, price }) {
   const navigate = useNavigate();
 
-  const { userProductDataCollection, setUserProductDataCollection } =
-    useOutletContext();
+  const { dataCollectionHelperMethods } = useOutletContext();
 
-  console.log(userProductDataCollection);
+  const productData = dataCollectionHelperMethods.getProductData({ productID });
 
-  let productData = null;
-  let addedToCart = false;
-  let addedToWishlist = false;
-  let count = 1;
+  let addedToCart = productData ? productData.addedToCart : false;
+  let addedToWishlist = productData ? productData.addedToWishlist : false;
+  let count = productData ? productData.count : 1;
 
-  if (userProductDataCollection) {
-    productData = userProductDataCollection.find(
-      (product) => product.productID === productID
-    );
-    if (productData) {
-      addedToCart = productData.addedToCart;
-      addedToWishlist = productData.addedToWishlist;
-      count = productData.count;
-    }
-  }
-
-  const toggleAddToCartState = () => {
-    if (productData) {
-      let newUserProductDataCollection = [...userProductDataCollection];
-      newUserProductDataCollection.find(
-        (product) => product.productID === productID
-      ).addedToCart = !productData.addedToCart;
-      setUserProductDataCollection(newUserProductDataCollection);
-    } else {
-      let newUserProductDataCollection = [...userProductDataCollection];
-      newUserProductDataCollection.push(
-        new UserProductData({
-          productID: productID,
-          addedToCart: true,
-          addedToWishlist: false,
-          count: 1,
-        })
-      );
-      setUserProductDataCollection(newUserProductDataCollection);
-    }
+  const handleWishlistToggle = () => {
+    dataCollectionHelperMethods.toggleWishlistState({ productID });
   };
 
-  const toggleWishlistState = () => {
-    if (productData) {
-      let newUserProductDataCollection = [...userProductDataCollection];
-      newUserProductDataCollection.find(
-        (product) => product.productID === productID
-      ).addedToWishlist = !productData.addedToWishlist;
-      setUserProductDataCollection(newUserProductDataCollection);
-    } else {
-      let newUserProductDataCollection = [...userProductDataCollection];
-      newUserProductDataCollection.push(
-        new UserProductData({
-          productID: productID,
-          addedToCart: false,
-          addedToWishlist: true,
-          count: 1,
-        })
-      );
-      setUserProductDataCollection(newUserProductDataCollection);
-    }
+  const handlePrevCount = () => {
+    dataCollectionHelperMethods.handleCount({ productID, minus: true });
   };
 
-  const handleCount = ({ minus = false } = {}) => {
-    if (productData) {
-      let newUserProductDataCollection = [...userProductDataCollection];
-      let newCount = productData.count;
-      if (minus && productData.count > 1) {
-        newCount--;
-      } else if (!minus && productData.count <= 7) {
-        newCount++;
-      }
-      newUserProductDataCollection.find(
-        (product) => product.productID === productID
-      ).count = newCount;
-      setUserProductDataCollection(newUserProductDataCollection);
-    } else {
-      let newUserProductDataCollection = [...userProductDataCollection];
-      newUserProductDataCollection.push(
-        new UserProductData({
-          productID: productID,
-          addedToCart: false,
-          addedToWishlist: false,
-          count: minus ? 1 : 2,
-        })
-      );
-      setUserProductDataCollection(newUserProductDataCollection);
-    }
+  const handleNextCount = () => {
+    dataCollectionHelperMethods.handleCount({ productID, minus: false });
+  };
+
+  const handleAddToCart = () => {
+    dataCollectionHelperMethods.toggleAddToCartState({ productID });
   };
 
   const handleOpenDetails = () => {
@@ -121,7 +54,7 @@ function ProductCard({ productID, image, title, price }) {
             <div className="inter text-md max-sm:text-[0.9rem] font-bold">
               $ {price}
             </div>
-            <button onClick={toggleWishlistState}>
+            <button onClick={handleWishlistToggle}>
               <img
                 src={addedToWishlist ? heartIcon : heartOutlineIcon}
                 className="w-5"
@@ -134,12 +67,12 @@ function ProductCard({ productID, image, title, price }) {
         <Counter
           value={count}
           className="h-full"
-          onPrev={() => handleCount({ minus: true })}
-          onNext={() => handleCount()}
+          onPrev={handlePrevCount}
+          onNext={handleNextCount}
         />
         <AddToCartButton
           added={addedToCart}
-          onClick={toggleAddToCartState}
+          onClick={handleAddToCart}
           className="flex-1"
         />
       </div>
