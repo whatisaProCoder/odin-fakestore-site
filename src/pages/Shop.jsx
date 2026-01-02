@@ -9,6 +9,7 @@ import Footer from "../components/layout/Footer";
 import Paginator from "../components/shop/Paginator";
 import { productLimitPerPage } from "../constants/productLimitPerPage";
 import { useNavigate, useParams } from "react-router";
+import Spinner from "../components/common/Loader/Spinner";
 
 function Shop() {
   const navigate = useNavigate();
@@ -85,8 +86,11 @@ function Shop() {
             <div className="flex flex-row gap-2">
               <div
                 onClick={toggleFilter}
-                className="select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-colors hover:bg-[#1b1d20]"
+                className="select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-colors hover:bg-[#1b1d20] flex flex-row gap-2 items-center"
               >
+                {filterSectionActive && categoryLoading && (
+                  <Spinner className="h-4 max-sm:h-3 max-sm:border-3" />
+                )}
                 Filter
               </div>
               {activeCategorySlug !== "all" && !filterSectionActive && (

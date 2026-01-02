@@ -7,6 +7,7 @@ const useMultipleProducts = (productIDs) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (productIDs.length === 0) { return; }
     Promise.allSettled(
       productIDs.map(id => DummyJSON().getProductByID(id))
     )

@@ -91,15 +91,15 @@ function useUserProductDataCollection() {
     }
   };
 
-  const getProductsInCart = () => {
-    return userProductDataCollection.filter(product => product.addedToCart === true)
+  const getProductIDsInCart = () => {
+    return userProductDataCollection.filter(product => product.addedToCart === true).map(product => product.productID)
   }
 
-  const getProductsInWishlist = () => {
-    return userProductDataCollection.filter(product => product.addedToWishlist === true)
+  const getProductIDsInWishlist = () => {
+    return userProductDataCollection.filter(product => product.addedToWishlist === true).map(product => product.productID)
   }
 
-  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductsInCart, getProductsInWishlist };
+  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductIDsInCart, getProductIDsInWishlist };
 
   return { userProductDataCollection, dataCollectionHelperMethods }
 }

@@ -8,7 +8,7 @@ function App() {
     useUserProductDataCollection();
 
   const numberOfProductsInCart =
-    dataCollectionHelperMethods.getProductsInCart().length;
+    dataCollectionHelperMethods.getProductIDsInCart().length;
 
   return (
     <div className="flex flex-col">
