@@ -105,30 +105,30 @@ function Cart() {
                 <div className="flex flex-row justify-start">
                   <div className="mt-6 bg-[#14161a] border border-[#202227] w-110 max-md:w-full rounded-md">
                     <div className="poppins text-[0.95rem] max-sm:text-sm px-16 max-sm:px-8 py-8">
-                      <div className="px-6 py-3 max-sm:py-2 flex flex-row items-center justify-between border-b border-[#32333fb5]">
+                      <div className="px-6 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
                         <div>Subtotal</div>
                         <div className="font-bold">$ {subTotal}</div>
                       </div>
-                      <div className="px-6 py-3 max-sm:py-2 flex flex-row items-center justify-between border-b border-[#32333fb5]">
+                      <div className="px-6 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
                         <div>Tax (14%)</div>
                         <div className="font-bold">$ {tax}</div>
                       </div>
-                      <div className="px-6 py-3 max-sm:py-2 flex flex-row items-center justify-between border-b border-[#32333fb5]">
+                      <div className="px-6 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
                         <div>Shipping</div>
                         <div className="font-bold">
                           {shipping === 0 ? "Free" : `$ ${shipping}`}
                         </div>
                       </div>
-                      <div className="px-6 py-3 max-sm:py-2 flex flex-row items-center justify-between border-b border-[#32333fb5]">
+                      <div className="px-6 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
                         <div>Packaging</div>
                         <div className="font-bold">$ {packaging}</div>
                       </div>
-                      <div className="px-6 py-3 max-sm:py-2 flex flex-row items-center justify-between">
+                      <div className="px-6 py-3 flex flex-row items-center justify-between">
                         <div className="font-bold">Total</div>
                         <div className="font-bold">$ {total}</div>
                       </div>
                     </div>
-                    <div className="bg-[#191C21] py-8 max-sm:py-6 flex flex-row justify-center items-center">
+                    <div className="bg-[#191C21] py-8 flex flex-row justify-center items-center">
                       <ActionButton
                         text="Checkout"
                         className="max-sm:text-sm"
