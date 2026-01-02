@@ -8,11 +8,18 @@ import ErrorPrompt from "../components/common/ErrorPrompt";
 import Footer from "../components/layout/Footer";
 import Paginator from "../components/shop/Paginator";
 import { productLimitPerPage } from "../constants/productLimitPerPage";
+import { useNavigate, useParams } from "react-router";
 
 function Shop() {
-  const [activeCategorySlug, setActiveCategorySlug] = useState("all");
+  const navigate = useNavigate();
 
-  const [filterSectionActive, setFilterSectionActive] = useState(false);
+  const { category } = useParams();
+
+  const activeCategorySlug = category || "all";
+
+  const [filterSectionActive, setFilterSectionActive] = useState(
+    activeCategorySlug !== "all"
+  );
 
   const [activePageNumber, setActivePageNumber] = useState(1);
 
@@ -36,7 +43,7 @@ function Shop() {
   };
 
   const handleCategoryOnClick = (slug) => {
-    setActiveCategorySlug(slug);
+    navigate(`/shop/${slug}`);
     setActivePageNumber(1);
   };
 

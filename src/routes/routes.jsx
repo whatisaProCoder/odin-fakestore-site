@@ -13,7 +13,7 @@ export const routes = [
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: "shop", element: <Shop /> },
+      { path: "shop/:category?", element: <Shop /> },
       { path: "cart", element: <Cart /> },
       { path: "wishlist", element: <Wishlist /> },
       { path: "product/:id", element: <Product /> },

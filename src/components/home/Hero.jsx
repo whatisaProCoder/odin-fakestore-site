@@ -11,8 +11,11 @@ import HeroActionButton from "./HeroActionButton";
 import useCarousel from "../../hooks/useCarousel";
 import { useMediaQuery } from "react-responsive";
 import { Activity } from "react";
+import { useNavigate } from "react-router";
 
 function Hero() {
+  const navigate = useNavigate();
+
   const isTablet = useMediaQuery({ maxWidth: 900 });
 
   const itemArray = [
@@ -24,6 +27,10 @@ function Hero() {
   ];
 
   const { itemIndex, setItemIndex } = useCarousel({ itemArray, delay: 1700 });
+
+  const handleShopNowOnClick = () => {
+    navigate("/shop");
+  };
 
   return (
     <div className="h-120 max-sm:h-100">
@@ -39,7 +46,11 @@ function Hero() {
             <div className="mt-2 poppins text-xl max-sm:text-[0.9rem] text-center">
               Your one-stop online shopping site.
             </div>
-            <HeroActionButton text="Shop now" className="mt-10" />
+            <HeroActionButton
+              text="Shop now"
+              className="mt-10"
+              onClick={handleShopNowOnClick}
+            />
           </div>
           <Activity mode={isTablet ? "hidden" : "visible"}>
             <Carousel
