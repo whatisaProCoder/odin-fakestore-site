@@ -11,5 +11,5 @@ export const TopCategories = [
   { id: 2, slug: "mens-watches", name: "Men's Watch", img: mensWatchesCategoryIcon },
   { id: 3, slug: "mens-shirts", name: "Men's Shirt", img: mensShirtCategoryIcon },
   { id: 4, slug: "fragrances", name: "Fragnance", img: fragnanceCategoryIcon },
-  { id: 5, name: "Women's Bag", img: womensBagCategoryIcon }
+  { id: 5, slug: "womens-bags", name: "Women's Bag", img: womensBagCategoryIcon }
 ]
