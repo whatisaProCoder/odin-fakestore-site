@@ -14,12 +14,13 @@ function useUserProductDataCollection() {
   }
 
   const toggleAddToCartState = ({ productID }) => {
-    const productData = getProductData({ productID });
-    if (productData) {
+    const productIndex = userProductDataCollection.findIndex((product) => product.productID === productID)
+    if (productIndex !== -1) {
       let newUserProductDataCollection = [...userProductDataCollection];
-      newUserProductDataCollection.find(
-        (product) => product.productID === productID
-      ).addedToCart = !productData.addedToCart;
+      newUserProductDataCollection[productIndex] = {
+        ...newUserProductDataCollection[productIndex],
+        addedToCart: !newUserProductDataCollection[productIndex].addedToCart
+      }
       setUserProductDataCollection(newUserProductDataCollection);
     } else {
       let newUserProductDataCollection = [...userProductDataCollection];
@@ -36,12 +37,13 @@ function useUserProductDataCollection() {
   };
 
   const toggleWishlistState = ({ productID }) => {
-    const productData = getProductData({ productID });
-    if (productData) {
+    const productIndex = userProductDataCollection.findIndex((product) => product.productID === productID)
+    if (productIndex !== -1) {
       let newUserProductDataCollection = [...userProductDataCollection];
-      newUserProductDataCollection.find(
-        (product) => product.productID === productID
-      ).addedToWishlist = !productData.addedToWishlist;
+      newUserProductDataCollection[productIndex] = {
+        ...newUserProductDataCollection[productIndex],
+        addedToWishlist: !newUserProductDataCollection[productIndex].addedToWishlist
+      }
       setUserProductDataCollection(newUserProductDataCollection);
     } else {
       let newUserProductDataCollection = [...userProductDataCollection];
@@ -58,18 +60,19 @@ function useUserProductDataCollection() {
   }
 
   const handleCount = ({ productID, minus = false } = {}) => {
-    const productData = getProductData({ productID });
-    if (productData) {
+    const productIndex = userProductDataCollection.findIndex((product) => product.productID === productID)
+    if (productIndex !== -1) {
       let newUserProductDataCollection = [...userProductDataCollection];
-      let newCount = productData.count;
-      if (minus && productData.count > 1) {
-        newCount--;
-      } else if (!minus && productData.count <= 7) {
-        newCount++;
+      let productCount = newUserProductDataCollection[productIndex].count;
+      if (minus && productCount > 1) {
+        productCount = productCount - 1;
+      } else if (!minus && productCount <= 7) {
+        productCount = productCount + 1;
       }
-      newUserProductDataCollection.find(
-        (product) => product.productID === productID
-      ).count = newCount;
+      newUserProductDataCollection[productIndex] = {
+        ...newUserProductDataCollection[productIndex],
+        count: productCount
+      }
       setUserProductDataCollection(newUserProductDataCollection);
     } else {
       let newUserProductDataCollection = [...userProductDataCollection];
