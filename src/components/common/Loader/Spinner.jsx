@@ -3,7 +3,7 @@ function Spinner({ className }) {
     <div
       className={
         className +
-        " border-4 border-[#447fdf] border-r-[#00000000] rounded-full aspect-square spin bg-[#141414]"
+        " border-4 border-[#447fdf] border-r-[#00000000] fade-in rounded-full aspect-square spin bg-[#141414]"
       }
     />
   );
