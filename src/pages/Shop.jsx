@@ -17,9 +17,7 @@ function Shop() {
 
   const activeCategorySlug = category || "all";
 
-  const [filterSectionActive, setFilterSectionActive] = useState(
-    activeCategorySlug !== "all"
-  );
+  const [filterSectionActive, setFilterSectionActive] = useState(false);
 
   const [activePageNumber, setActivePageNumber] = useState(1);
 
@@ -80,11 +78,21 @@ function Shop() {
             <div className="poppins text-xl font-semibold max-sm:text-sm">
               Products
             </div>
-            <div
-              onClick={toggleFilter}
-              className="select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-colors hover:bg-[#1b1d20]"
-            >
-              Filter
+            <div className="flex flex-row gap-2">
+              <div
+                onClick={toggleFilter}
+                className="select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-colors hover:bg-[#1b1d20]"
+              >
+                Filter
+              </div>
+              {activeCategorySlug !== "all" && !filterSectionActive && (
+                <div
+                  onClick={() => handleCategoryOnClick("all")}
+                  className="fade-in select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-colors hover:bg-[#1b1d20]"
+                >
+                  Show All Products
+                </div>
+              )}
             </div>
           </div>
           {filterSectionActive && !categoryLoading && categoryError && (
@@ -93,7 +101,7 @@ function Shop() {
             </div>
           )}
           {filterSectionActive && !categoryLoading && !categoryError && (
-            <div className="mt-6 flex flex-row flex-wrap gap-3 max-sm:gap-2 fade-in">
+            <div className="mt-6 flex flex-row flex-wrap gap-3 max-sm:gap-1.5 fade-in">
               <CategoryChips
                 text="All"
                 active={checkCategorySlug("all")}
@@ -148,7 +156,7 @@ function Shop() {
           )}
         </div>
       </div>
-      {!productsLoading && !productsError && <Footer />}
+      {!productsLoading && !productsError && <Footer className="mb-4" />}
     </>
   );
 }

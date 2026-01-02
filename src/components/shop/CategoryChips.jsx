@@ -4,7 +4,7 @@ function CategoryChips({ text, onClick, active, className }) {
       onClick={onClick}
       className={
         className +
-        " select-none px-3 py-1 border border-[#32333fb5] rounded-2xl inter text-md max-sm:text-xs font-medium transition-colors bg-[#1b1d20] hover:bg-[#1b1d20]"
+        " select-none px-3 max-sm:px-2 py-1 border border-[#32333fb5] rounded-2xl inter text-md max-sm:text-xs font-medium transition-colors bg-[#1b1d20] hover:bg-[#1b1d20]"
       }
       style={{
         color: active ? "black" : "rgba(255,255,255,0.87)",
