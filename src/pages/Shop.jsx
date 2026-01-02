@@ -90,7 +90,7 @@ function Shop() {
                   onClick={() => handleCategoryOnClick("all")}
                   className="fade-in select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-colors hover:bg-[#1b1d20]"
                 >
-                  Show All Products
+                  Show All
                 </div>
               )}
             </div>
