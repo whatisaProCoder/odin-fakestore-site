@@ -86,10 +86,10 @@ function Shop() {
             <div className="flex flex-row gap-2">
               <div
                 onClick={toggleFilter}
-                className="select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-colors hover:bg-[#1b1d20] flex flex-row gap-2 items-center"
+                className="select-none px-3 py-1 border border-[#32333fb5] rounded-2xl poppins text-md max-sm:text-xs font-medium transition-all hover:bg-[#1b1d20] flex flex-row gap-2 items-center"
               >
                 {filterSectionActive && categoryLoading && (
-                  <Spinner className="h-4 max-sm:h-3 max-sm:border-3" />
+                  <Spinner className="h-4 max-sm:h-3 max-sm:border-[2.5px]" />
                 )}
                 Filter
               </div>
