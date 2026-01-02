@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-function ExclusiveDealsCard({ productID, image, title, price }) {
+function SimpleProductCard({ productID, image, title, price }) {
   const navigate = useNavigate();
 
   const handleOpenDetails = () => {
@@ -33,4 +33,4 @@ function ExclusiveDealsCard({ productID, image, title, price }) {
   );
 }
 
-export default ExclusiveDealsCard;
+export default SimpleProductCard;

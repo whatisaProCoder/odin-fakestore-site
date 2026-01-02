@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserProductData from "../models/userProductData";
+import { getSavedUserData, setUserData } from "../utils/storage";
 
 function useUserProductDataCollection() {
-  const [userProductDataCollection, setUserProductDataCollection] = useState(
-    []
-  );
+  const [userProductDataCollection, setUserProductDataCollection] = useState(getSavedUserData());
+
+  useEffect(() => {
+    setUserData(userProductDataCollection)
+  }, [userProductDataCollection]);
 
   const getProductData = ({ productID }) => {
     const productData = userProductDataCollection.find(

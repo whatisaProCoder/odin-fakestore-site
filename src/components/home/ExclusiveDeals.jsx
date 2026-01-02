@@ -2,7 +2,7 @@ import { ExclusiveDealProductIDs } from "../../constants/exclusiveDeals";
 import useMultipleProducts from "../../hooks/useMultipleProducts";
 import ErrorPrompt from "../common/ErrorPrompt";
 import Loader from "../common/Loader";
-import ExclusiveDealsCard from "./ExclusiveDealsCard";
+import SimpleProductCard from "./SimpleProductCard";
 
 function ExclusiveDeals() {
   const { data, loading, error } = useMultipleProducts(ExclusiveDealProductIDs);
@@ -18,7 +18,7 @@ function ExclusiveDeals() {
             !error &&
             data.map((product) => {
               return (
-                <ExclusiveDealsCard
+                <SimpleProductCard
                   key={product.id}
                   productID={product.id}
                   image={product.images[0]}
