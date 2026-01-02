@@ -3,8 +3,15 @@ import PropTypes from "prop-types";
 import searchIcon from "../../assets/icons/search-icon.svg";
 import { useMediaQuery } from "react-responsive";
 
-function SearchField({ value, setValue, trigger }) {
+function SearchField({ value, onChange, trigger }) {
   const isPhone = useMediaQuery({ maxWidth: 750 });
+
+  const handleEnterKeyEvent = (e) => {
+    if (e.key === "Enter") {
+      trigger();
+    }
+  };
+
   return (
     <div
       className="flex flex-row items-center border-2 border-[#3d3e49d0] rounded-[1.25rem] bg-[#22262d] overflow-hidden"
@@ -16,7 +23,8 @@ function SearchField({ value, setValue, trigger }) {
         type="text"
         placeholder="Search"
         value={value}
-        onChange={setValue}
+        onChange={onChange}
+        onKeyDown={handleEnterKeyEvent}
         className="inter outline-0 w-60 text-[1rem] px-3"
         style={{ width: isPhone ? "18rem" : "15rem" }}
       />

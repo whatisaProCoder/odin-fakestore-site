@@ -2,9 +2,24 @@ import Brand from "../home/Brand";
 import SearchField from "../common/SearchField";
 import NavBar from "./NavBar";
 import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function Header({ numberOfProductsInCart }) {
   const isPhone = useMediaQuery({ maxWidth: 750 });
+
+  const [search, setSearch] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSearchField = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearchTrigger = () => {
+    const encodedURI = encodeURIComponent(search);
+    navigate(`/search?query=${encodedURI}`);
+  };
 
   return (
     <div
@@ -20,7 +35,11 @@ function Header({ numberOfProductsInCart }) {
         style={{ flexDirection: isPhone ? "column" : "row" }}
       >
         <Brand fontSize={isPhone ? "1.5rem" : "1.25rem"} />
-        <SearchField />
+        <SearchField
+          value={search}
+          onChange={handleSearchField}
+          trigger={handleSearchTrigger}
+        />
       </div>
       <NavBar numberOfProductsInCart={numberOfProductsInCart} />
     </div>
