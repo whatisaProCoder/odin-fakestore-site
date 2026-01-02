@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryChips from "../components/shop/CategoryChips";
 import useCategories from "../hooks/useCategories";
 import useProductsByCategory from "../hooks/useProductsByCategory";
@@ -57,6 +57,10 @@ function Shop() {
       });
     }, 300);
   };
+
+  useEffect(() => {
+    scrollToTop();
+  }, [activeCategorySlug]);
 
   const handleNextPage = () => {
     setActivePageNumber((pageNumber) => pageNumber + 1);
