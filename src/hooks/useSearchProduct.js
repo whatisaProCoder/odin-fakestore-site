@@ -9,7 +9,7 @@ const useSearchProduct = (key) => {
   useEffect(() => {
     if (key === null || key === undefined || key === "") { return }
     DummyJSON().searchProduct(key)
-      .then((response) => setData({ products: response.products, total: response.total }))
+      .then((response) => setData(response.products))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, [key]);

@@ -11,7 +11,7 @@ function Search() {
 
   const { data, loading, error } = useSearchProduct(searchKey);
 
-  const emptyResult = data.total === 0;
+  const emptyResult = data.length === 0;
 
   return (
     <div className="py-16 max-sm:py-10 flex flex-row justify-center items-center">
@@ -27,7 +27,7 @@ function Search() {
         <div>
           {!loading && !error && !emptyResult && (
             <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
-              {data.products.map((product) => {
+              {data.map((product) => {
                 return (
                   <ProductCard
                     key={product.id}

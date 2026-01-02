@@ -4,5 +4,5 @@ export const routeToSection = [
   { path: "/product", section: "shop" },
   { path: "/cart", section: "cart" },
   { path: "/wishlist", section: "wishlist" },
-  { path: "/search", section: "shop" }
+  { path: "/search", section: "none" }
 ];
