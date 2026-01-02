@@ -91,6 +91,12 @@ function useUserProductDataCollection() {
     }
   };
 
+  const clearCart = () => {
+    let newUserProductDataCollection = [...userProductDataCollection];
+    newUserProductDataCollection = newUserProductDataCollection.filter(product => product.addedToCart !== true);
+    setUserProductDataCollection(newUserProductDataCollection);
+  }
+
   const getProductIDsInCart = () => {
     return userProductDataCollection.filter(product => product.addedToCart === true).map(product => product.productID)
   }
@@ -99,7 +105,7 @@ function useUserProductDataCollection() {
     return userProductDataCollection.filter(product => product.addedToWishlist === true).map(product => product.productID)
   }
 
-  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductIDsInCart, getProductIDsInWishlist };
+  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductIDsInCart, getProductIDsInWishlist, clearCart };
 
   return { userProductDataCollection, dataCollectionHelperMethods }
 }
