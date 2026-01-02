@@ -15,7 +15,6 @@ function useUserProductDataCollection() {
 
   const toggleAddToCartState = ({ productID }) => {
     const productData = getProductData({ productID });
-    console.log("toggle function product data: " + productData)
     if (productData) {
       let newUserProductDataCollection = [...userProductDataCollection];
       newUserProductDataCollection.find(
@@ -23,7 +22,6 @@ function useUserProductDataCollection() {
       ).addedToCart = !productData.addedToCart;
       setUserProductDataCollection(newUserProductDataCollection);
     } else {
-      console.log("else running")
       let newUserProductDataCollection = [...userProductDataCollection];
       newUserProductDataCollection.push(
         new UserProductData({
@@ -87,15 +85,15 @@ function useUserProductDataCollection() {
     }
   };
 
-  const getProductIDsInCart = () => {
+  const getProductsInCart = () => {
     return userProductDataCollection.filter(product => product.addedToCart === true)
   }
 
-  const getProductIDsInWishlist = () => {
+  const getProductsInWishlist = () => {
     return userProductDataCollection.filter(product => product.addedToWishlist === true)
   }
 
-  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductIDsInCart, getProductIDsInWishlist };
+  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductsInCart, getProductsInWishlist };
 
   return { userProductDataCollection, dataCollectionHelperMethods }
 }
