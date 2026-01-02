@@ -7,9 +7,12 @@ function App() {
   const { userProductDataCollection, dataCollectionHelperMethods } =
     useUserProductDataCollection();
 
+  const numberOfProductsInCart =
+    dataCollectionHelperMethods.getProductsInCart().length;
+
   return (
     <div className="flex flex-col">
-      <Header />
+      <Header numberOfProductsInCart={numberOfProductsInCart} />
       <Outlet
         context={{ userProductDataCollection, dataCollectionHelperMethods }}
       />

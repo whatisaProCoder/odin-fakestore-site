@@ -7,7 +7,7 @@ import { useActiveSection } from "../../hooks/useActiveSection";
 import { useNavigate } from "react-router";
 import { useMediaQuery } from "react-responsive";
 
-function NavBar() {
+function NavBar({ numberOfProductsInCart }) {
   const isTablet = useMediaQuery({ minWidth: 750, maxWidth: 900 });
 
   const isSmallPhone = useMediaQuery({ maxWidth: 550 });
@@ -33,12 +33,14 @@ function NavBar() {
       </NavItem>
       <NavItem active={checkAgainst("cart")} onClick={() => navigate("/cart")}>
         <img src={cartIcon} className="w-[1.32rem]" />
-        <div
-          className="inter absolute bg-[#2573E9] border border-[#1b1d20] h-4.75 text-center aspect-square rounded-full text-[0.75rem] font-medium"
-          style={{ translate: "0.75rem -0.8rem" }}
-        >
-          2
-        </div>
+        {numberOfProductsInCart !== 0 && (
+          <div
+            className="inter absolute bg-[#2573E9] border border-[#1b1d20] h-4.75 text-center aspect-square rounded-full text-[0.75rem] font-medium"
+            style={{ translate: "0.75rem -0.8rem" }}
+          >
+            {numberOfProductsInCart}
+          </div>
+        )}
         {!isTablet && !isSmallPhone && <div>Cart</div>}
       </NavItem>
       <NavItem

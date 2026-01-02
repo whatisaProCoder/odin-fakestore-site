@@ -3,7 +3,7 @@ import SearchField from "../common/SearchField";
 import NavBar from "./NavBar";
 import { useMediaQuery } from "react-responsive";
 
-function Header() {
+function Header({ numberOfProductsInCart }) {
   const isPhone = useMediaQuery({ maxWidth: 750 });
 
   return (
@@ -22,7 +22,7 @@ function Header() {
         <Brand fontSize={isPhone ? "1.5rem" : "1.25rem"} />
         <SearchField />
       </div>
-      <NavBar />
+      <NavBar numberOfProductsInCart={numberOfProductsInCart} />
     </div>
   );
 }
