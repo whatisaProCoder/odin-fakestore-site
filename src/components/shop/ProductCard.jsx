@@ -52,7 +52,7 @@ function ProductCard({ productID, image, title, price }) {
   };
 
   return (
-    <div className="bg-[#1b1d20] flex flex-col p-2 border border-[#32333fb5] rounded-md max-sm:rounded-xl transition-all hover:drop-shadow-xl hover:-translate-y-1">
+    <div className="fade-in bg-[#1b1d20] flex flex-col p-2 border border-[#32333fb5] rounded-md max-sm:rounded-xl transition-all hover:drop-shadow-xl hover:-translate-y-1">
       <div className="flex-1 flex flex-col">
         <img
           onClick={handleOpenDetails}

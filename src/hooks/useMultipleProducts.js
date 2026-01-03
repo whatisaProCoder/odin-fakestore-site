@@ -8,10 +8,12 @@ const useMultipleProducts = (productIDs) => {
 
   useEffect(() => {
     if (productIDs.length === 0) { return; }
+    let active = true;
     Promise.allSettled(
       productIDs.map(id => DummyJSON().getProductByID(id))
     )
       .then((response) => {
+        if (!active) return
         const products = response
           .filter(resObj => resObj.status === "fulfilled")
           .map(resObj => resObj.value)
@@ -22,6 +24,10 @@ const useMultipleProducts = (productIDs) => {
       }
       )
       .finally(() => setLoading(false));
+
+    return () => {
+      active = false
+    }
   }, [productIDs]);
 
   return { data, error, loading };
