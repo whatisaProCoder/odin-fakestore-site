@@ -78,7 +78,7 @@ function useUserProductDataCollection() {
       let productCount = newUserProductDataCollection[productIndex].count;
       if (minus && productCount > 1) {
         productCount = productCount - 1;
-      } else if (!minus && productCount <= 7) {
+      } else if (!minus && productCount < 7) {
         productCount = productCount + 1;
       }
       newUserProductDataCollection[productIndex] = {
