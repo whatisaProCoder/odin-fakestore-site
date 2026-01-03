@@ -95,7 +95,7 @@ function Product() {
                 itemArray={productDataFromAPI.images.map((url) => ({
                   src: url,
                 }))}
-                delay={1500}
+                delay={2000}
                 height="20rem"
                 width="20rem"
               />
