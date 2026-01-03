@@ -1,6 +1,4 @@
-import useMultipleProducts from "../hooks/useMultipleProducts";
 import ErrorPrompt from "../components/common/ErrorPrompt";
-import Loader from "../components/common/Loader";
 import ProductCard from "../components/shop/ProductCard";
 import { useNavigate, useOutletContext } from "react-router";
 import ActionButton from "../components/common/ActionButton";
@@ -12,11 +10,9 @@ function Cart() {
 
   const navigate = useNavigate();
 
-  const productIDs = dataCollectionHelperMethods.getProductIDsInCart();
+  const products = dataCollectionHelperMethods.getProductsInCart();
 
-  const { data, loading, error } = useMultipleProducts(productIDs);
-
-  const emptyCart = productIDs.length === 0;
+  const emptyCart = products.length === 0;
 
   let totalCount = 0;
   let subTotal = 0;
@@ -26,12 +22,9 @@ function Cart() {
   let total = 0;
 
   if (!emptyCart) {
-    data.forEach((product) => {
-      const productCount = dataCollectionHelperMethods.getProductData({
-        productID: product.id,
-      }).count;
-      subTotal += product.price * productCount;
-      totalCount += productCount;
+    products.forEach((product) => {
+      subTotal += product.price * product.count;
+      totalCount += product.count;
     });
 
     subTotal = Number.parseFloat(subTotal.toFixed(2));
@@ -73,72 +66,58 @@ function Cart() {
         {!emptyCart && (
           <div>
             <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
-              {!loading &&
-                !error &&
-                data.map((product) => {
-                  return (
-                    <ProductCard
-                      key={product.id}
-                      productID={product.id}
-                      image={product.images[0]}
-                      title={product.title}
-                      price={product.price}
-                    />
-                  );
-                })}
+              {products.map((product) => {
+                return (
+                  <ProductCard
+                    key={product.productID}
+                    productID={product.productID}
+                    image={product.image}
+                    title={product.title}
+                    price={product.price}
+                  />
+                );
+              })}
             </div>
-            {loading && (
-              <div className="mt-36 flex flex-col items-center justify-center">
-                <Loader text="Loading the products..." />
+            <div>
+              <div className="mt-16 poppins text-xl font-semibold max-sm:text-md">
+                Order Summary
               </div>
-            )}
-            {!loading && error && (
-              <div className="mt-36 flex flex-col items-center justify-center">
-                <ErrorPrompt />
-              </div>
-            )}
-            {!loading && !error && (
-              <div>
-                <div className="mt-16 poppins text-xl font-semibold max-sm:text-md">
-                  Order Summary
-                </div>
-                <div className="flex flex-row justify-start">
-                  <div className="mt-6 bg-[#14161a] border border-[#202227] w-110 max-md:w-full rounded-md max-sm:rounded-xl overflow-clip">
-                    <div className="poppins text-[0.95rem] max-sm:text-sm px-16 max-sm:px-8 py-8">
-                      <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
-                        <div>Subtotal</div>
-                        <div className="font-bold">$ {subTotal}</div>
-                      </div>
-                      <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
-                        <div>Tax (14%)</div>
-                        <div className="font-bold">$ {tax}</div>
-                      </div>
-                      <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
-                        <div>Shipping</div>
-                        <div className="font-bold">
-                          {shipping === 0 ? "Free" : `$ ${shipping}`}
-                        </div>
-                      </div>
-                      <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
-                        <div>Packaging</div>
-                        <div className="font-bold">$ {packaging}</div>
-                      </div>
-                      <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between">
-                        <div className="font-bold">Total</div>
-                        <div className="font-bold">$ {total}</div>
+              <div className="flex flex-row justify-start">
+                <div className="mt-6 bg-[#14161a] border border-[#202227] w-110 max-md:w-full rounded-md max-sm:rounded-xl overflow-clip">
+                  <div className="poppins text-[0.95rem] max-sm:text-sm px-16 max-sm:px-8 py-8">
+                    <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
+                      <div>Subtotal</div>
+                      <div className="font-bold">$ {subTotal}</div>
+                    </div>
+                    <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
+                      <div>Tax (14%)</div>
+                      <div className="font-bold">$ {tax}</div>
+                    </div>
+                    <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
+                      <div>Shipping</div>
+                      <div className="font-bold">
+                        {shipping === 0 ? "Free" : `$ ${shipping}`}
                       </div>
                     </div>
-                    <div className="bg-[#191C21] py-8 flex flex-row justify-center items-center">
-                      <ActionButton
-                        text="Checkout"
-                        className="max-sm:text-sm"
-                        onClick={handleCheckout}
-                      />
+                    <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between border-b border-[#32333fb5]">
+                      <div>Packaging</div>
+                      <div className="font-bold">$ {packaging}</div>
                     </div>
+                    <div className="px-6 max-sm:px-4 py-3 flex flex-row items-center justify-between">
+                      <div className="font-bold">Total</div>
+                      <div className="font-bold">$ {total}</div>
+                    </div>
+                  </div>
+                  <div className="bg-[#191C21] py-8 flex flex-row justify-center items-center">
+                    <ActionButton
+                      text="Checkout"
+                      className="max-sm:text-sm"
+                      onClick={handleCheckout}
+                    />
                   </div>
                 </div>
               </div>
-            )}
+            </div>
           </div>
         )}
       </div>

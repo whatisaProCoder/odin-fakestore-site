@@ -16,7 +16,7 @@ function useUserProductDataCollection() {
     return productData;
   }
 
-  const toggleAddToCartState = ({ productID }) => {
+  const toggleAddToCartState = ({ productID, defaultProductData }) => {
     const productIndex = userProductDataCollection.findIndex((product) => product.productID === productID)
     if (productIndex !== -1) {
       let newUserProductDataCollection = [...userProductDataCollection];
@@ -30,6 +30,9 @@ function useUserProductDataCollection() {
       newUserProductDataCollection.push(
         new UserProductData({
           productID: productID,
+          image: defaultProductData.image,
+          title: defaultProductData.title,
+          price: defaultProductData.price,
           addedToCart: true,
           addedToWishlist: false,
           count: 1,
@@ -39,7 +42,7 @@ function useUserProductDataCollection() {
     }
   };
 
-  const toggleWishlistState = ({ productID }) => {
+  const toggleWishlistState = ({ productID, defaultProductData }) => {
     const productIndex = userProductDataCollection.findIndex((product) => product.productID === productID)
     if (productIndex !== -1) {
       let newUserProductDataCollection = [...userProductDataCollection];
@@ -53,6 +56,9 @@ function useUserProductDataCollection() {
       newUserProductDataCollection.push(
         new UserProductData({
           productID: productID,
+          image: defaultProductData.image,
+          title: defaultProductData.title,
+          price: defaultProductData.price,
           addedToCart: false,
           addedToWishlist: true,
           count: 1,
@@ -62,7 +68,7 @@ function useUserProductDataCollection() {
     }
   }
 
-  const handleCount = ({ productID, minus = false } = {}) => {
+  const handleCount = ({ productID, defaultProductData, minus = false } = {}) => {
     const productIndex = userProductDataCollection.findIndex((product) => product.productID === productID)
     if (productIndex !== -1) {
       let newUserProductDataCollection = [...userProductDataCollection];
@@ -82,6 +88,9 @@ function useUserProductDataCollection() {
       newUserProductDataCollection.push(
         new UserProductData({
           productID: productID,
+          image: defaultProductData.image,
+          title: defaultProductData.title,
+          price: defaultProductData.price,
           addedToCart: false,
           addedToWishlist: false,
           count: minus ? 1 : 2,
@@ -97,15 +106,15 @@ function useUserProductDataCollection() {
     setUserProductDataCollection(newUserProductDataCollection);
   }
 
-  const getProductIDsInCart = () => {
-    return userProductDataCollection.filter(product => product.addedToCart === true).map(product => product.productID)
+  const getProductsInCart = () => {
+    return userProductDataCollection.filter(product => product.addedToCart === true)
   }
 
-  const getProductIDsInWishlist = () => {
-    return userProductDataCollection.filter(product => product.addedToWishlist === true).map(product => product.productID)
+  const getProductsInWishlist = () => {
+    return userProductDataCollection.filter(product => product.addedToWishlist === true)
   }
 
-  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductIDsInCart, getProductIDsInWishlist, clearCart };
+  const dataCollectionHelperMethods = { getProductData, toggleAddToCartState, toggleWishlistState, handleCount, getProductsInCart, getProductsInWishlist, clearCart };
 
   return { userProductDataCollection, dataCollectionHelperMethods }
 }

@@ -15,20 +15,36 @@ function ProductCard({ productID, image, title, price }) {
   let addedToWishlist = productData ? productData.addedToWishlist : false;
   let count = productData ? productData.count : 1;
 
+  const defaultProductData = { productID, image, title, price };
+
   const handleWishlistToggle = () => {
-    dataCollectionHelperMethods.toggleWishlistState({ productID });
+    dataCollectionHelperMethods.toggleWishlistState({
+      productID,
+      defaultProductData,
+    });
   };
 
   const handlePrevCount = () => {
-    dataCollectionHelperMethods.handleCount({ productID, minus: true });
+    dataCollectionHelperMethods.handleCount({
+      productID,
+      defaultProductData,
+      minus: true,
+    });
   };
 
   const handleNextCount = () => {
-    dataCollectionHelperMethods.handleCount({ productID, minus: false });
+    dataCollectionHelperMethods.handleCount({
+      productID,
+      defaultProductData,
+      minus: false,
+    });
   };
 
   const handleAddToCart = () => {
-    dataCollectionHelperMethods.toggleAddToCartState({ productID });
+    dataCollectionHelperMethods.toggleAddToCartState({
+      productID,
+      defaultProductData,
+    });
   };
 
   const handleOpenDetails = () => {
