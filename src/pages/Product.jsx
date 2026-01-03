@@ -100,7 +100,7 @@ function Product() {
                 width="20rem"
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col max-w-[68%] max-xl:max-w-full">
               <div className="flex flex-row items-center gap-4 flex-wrap">
                 <div className="poppins font-semibold text-xl max-sm:text-[1rem] max-sm">
                   {productDataFromAPI.title}
@@ -139,17 +139,24 @@ function Product() {
             Similar Products
           </div>
           {!similarProductsLoading && !similarProductsError && (
-            <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
-              {similarProducts.products.slice(0, 4).map((product) => (
-                <SimpleProductCard
-                  key={product.id}
-                  productID={product.id}
-                  image={product.thumbnail}
-                  title={product.title}
-                  price={product.price}
-                  scrollToTop={true}
-                />
-              ))}
+            <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
+              {similarProducts.products
+                .filter((product) => {
+                  return (
+                    Number.parseInt(product.id) !== Number.parseInt(productID)
+                  );
+                })
+                .slice(0, 4)
+                .map((product) => (
+                  <SimpleProductCard
+                    key={product.id}
+                    productID={product.id}
+                    image={product.thumbnail}
+                    title={product.title}
+                    price={product.price}
+                    scrollToTop={true}
+                  />
+                ))}
             </div>
           )}
           {similarProductsLoading && (

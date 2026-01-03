@@ -5,12 +5,10 @@ function SimpleProductCard({ productID, image, title, price, scrollToTop }) {
 
   const handleOpenDetails = () => {
     if (scrollToTop) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }, 300);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
     navigate(`/product/${productID}`);
   };

@@ -3,7 +3,10 @@ import UserProductData from "../models/userProductData";
 import { getSavedUserData, setUserData } from "../utils/storage";
 
 function useUserProductDataCollection() {
-  const [userProductDataCollection, setUserProductDataCollection] = useState(getSavedUserData());
+  const [userProductDataCollection, setUserProductDataCollection] = useState(
+    getSavedUserData()
+      .filter(productData => productData.addedToCart || productData.addedToWishlist)
+  );
 
   useEffect(() => {
     setUserData(userProductDataCollection)

@@ -13,7 +13,7 @@ function ExclusiveDeals() {
         <div className="poppins text-xl font-semibold max-sm:text-md">
           Exclusive Deals
         </div>
-        <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
+        <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
           {!loading &&
             !error &&
             data.map((product) => {
