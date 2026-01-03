@@ -1,8 +1,8 @@
 import useSearchProduct from "../hooks/useSearchProduct";
 import ErrorPrompt from "../components/common/ErrorPrompt";
 import Loader from "../components/common/Loader";
-import ProductCard from "../components/shop/ProductCard";
 import { useSearchParams } from "react-router";
+import SimpleProductCard from "../components/home/SimpleProductCard";
 
 function Search() {
   const [searchParams] = useSearchParams();
@@ -29,7 +29,7 @@ function Search() {
             <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
               {data.map((product) => {
                 return (
-                  <ProductCard
+                  <SimpleProductCard
                     key={product.id}
                     productID={product.id}
                     image={product.images[0]}
