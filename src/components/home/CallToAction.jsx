@@ -23,7 +23,7 @@ function CallToAction() {
         </div>
         <ActionButton text="Shop Now" onClick={handleShopNowOnClick} />
       </div>
-      <Footer className="bg-[rgba(0,0,0,0.15)]" />
+      <Footer className="bg-[rgba(0,0,0,0.2)]" />
     </div>
   );
 }

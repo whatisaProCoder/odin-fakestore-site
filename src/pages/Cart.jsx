@@ -116,6 +116,7 @@ function Cart() {
                       text="Checkout"
                       className="max-sm:text-sm"
                       onClick={handleCheckout}
+                      disabled={checkoutMsg !== ""}
                     />
                   </div>
                 </div>
