@@ -1,5 +1,4 @@
 import ErrorPrompt from "../components/common/ErrorPrompt";
-import Loader from "../components/common/Loader";
 import ProductCard from "../components/shop/ProductCard";
 import { useOutletContext } from "react-router";
 
@@ -28,7 +27,7 @@ function Wishlist() {
                 <ProductCard
                   key={product.productID}
                   productID={product.productID}
-                  image={product.images[0]}
+                  image={product.image}
                   title={product.title}
                   price={product.price}
                 />
