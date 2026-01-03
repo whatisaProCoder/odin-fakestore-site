@@ -2,13 +2,17 @@ import PropTypes from "prop-types";
 
 import searchIcon from "../../assets/icons/search-icon.svg";
 import { useMediaQuery } from "react-responsive";
+import { useRef } from "react";
 
 function SearchField({ value, onChange, trigger }) {
+  const inputRef = useRef(null);
+
   const isPhone = useMediaQuery({ maxWidth: 750 });
 
   const handleEnterKeyEvent = (e) => {
     if (e.key === "Enter") {
       trigger();
+      inputRef.current.blur();
     }
   };
 
@@ -20,6 +24,7 @@ function SearchField({ value, onChange, trigger }) {
       }}
     >
       <input
+        ref={inputRef}
         type="text"
         placeholder="Search"
         value={value}

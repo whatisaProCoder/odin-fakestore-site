@@ -17,7 +17,8 @@ function DummyJSON() {
 
   function searchProduct(key) {
     return new Promise((resolve, reject) => {
-      fetch(`${baseURL}/search?q=${key}`)
+      const URI = encodeURI(key)
+      fetch(`${baseURL}/search?q=${URI}`)
         .then(res => {
           if (res.ok) { return res.json() }
           else { reject(new Error(`status code : ${res.status}`)) }

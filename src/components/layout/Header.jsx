@@ -17,8 +17,10 @@ function Header({ numberOfProductsInCart }) {
   };
 
   const handleSearchTrigger = () => {
-    const encodedURI = encodeURIComponent(search);
-    navigate(`/search?query=${encodedURI}`);
+    if (search !== "") {
+      const encodedURI = encodeURIComponent(search);
+      navigate(`/search?query=${encodedURI}`);
+    }
   };
 
   return (

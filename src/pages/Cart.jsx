@@ -47,9 +47,12 @@ function Cart() {
       setCheckoutMsg("Order was placed successfully!");
     }, 1000);
     setTimeout(() => {
+      setCheckoutMsg("Shipping will be done soon!");
+    }, 4000);
+    setTimeout(() => {
       dataCollectionHelperMethods.clearCart();
       navigate("/");
-    }, 4000);
+    }, 8000);
   };
 
   return (
@@ -122,9 +125,12 @@ function Cart() {
         )}
       </div>
       {checkoutMsg != "" && (
-        <div className="fixed bottom-16 fade-in bg-[rgba(255,255,255,0.87)] p-4 rounded-full flex flex-row items-center gap-4 text-xl text-[#101215] font-bold inter">
+        <div
+          key={checkoutMsg}
+          className="fixed bottom-16 fade-in-from-bottom bg-[#1b1d20] p-4 border border-[#32333fb5] rounded-full flex flex-row items-center gap-4 text-xl max-sm:text-sm font-semibold inter"
+        >
           <img src={successIcon} className="w-8" />
-          Order was placed successfully!
+          {checkoutMsg}
         </div>
       )}
     </div>
