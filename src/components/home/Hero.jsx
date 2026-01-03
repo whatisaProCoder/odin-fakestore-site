@@ -54,7 +54,6 @@ function Hero() {
           </div>
           <Activity mode={isTablet ? "hidden" : "visible"}>
             <Carousel
-              className=""
               height="20rem"
               width="22rem"
               itemArray={itemArray}

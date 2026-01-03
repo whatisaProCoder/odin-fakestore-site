@@ -4,6 +4,8 @@ function useCarousel({ itemArray, delay }) {
   const [itemIndex, setItemIndex] = useState(0);
 
   useEffect(() => {
+    if (!itemArray || itemArray.length === 0)
+      return
 
     itemArray.forEach(item => {
       const img = new Image();

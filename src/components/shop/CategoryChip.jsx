@@ -1,4 +1,4 @@
-function CategoryChips({ text, onClick, active, className }) {
+function CategoryChip({ text, onClick, active, className }) {
   return (
     <div
       onClick={onClick}
@@ -16,4 +16,4 @@ function CategoryChips({ text, onClick, active, className }) {
   );
 }
 
-export default CategoryChips;
+export default CategoryChip;

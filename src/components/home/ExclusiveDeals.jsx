@@ -21,7 +21,7 @@ function ExclusiveDeals() {
                 <SimpleProductCard
                   key={product.id}
                   productID={product.id}
-                  image={product.images[0]}
+                  image={product.thumbnail}
                   title={product.title}
                   price={product.price}
                 />

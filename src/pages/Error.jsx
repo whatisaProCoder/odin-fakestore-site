@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import leftArrow from "../assets/icons/left-arrow.svg";
+import rightArrow from "../assets/icons/right-arrow-black.svg";
 
 import IconButton from "../components/common/IconButton";
 
@@ -14,7 +14,7 @@ function Error() {
       </div>
       <IconButton
         className="mt-8"
-        iconSrc={leftArrow}
+        iconSrc={rightArrow}
         text="Go Home"
         onClick={() => navigate("/")}
       />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CategoryChips from "../components/shop/CategoryChips";
+import CategoryChip from "../components/shop/CategoryChip";
 import useCategories from "../hooks/useCategories";
 import useProductsByCategory from "../hooks/useProductsByCategory";
 import ProductCard from "../components/shop/ProductCard";
@@ -110,14 +110,14 @@ function Shop() {
           )}
           {filterSectionActive && !categoryLoading && !categoryError && (
             <div className="mt-6 flex flex-row flex-wrap gap-3 max-sm:gap-1.5 fade-in">
-              <CategoryChips
+              <CategoryChip
                 text="All"
                 active={checkCategorySlug("all")}
                 onClick={() => handleCategoryOnClick("all")}
               />
               {!categoryLoading &&
                 categoryData.map((category) => (
-                  <CategoryChips
+                  <CategoryChip
                     key={category.slug}
                     text={category.name}
                     onClick={() => handleCategoryOnClick(category.slug)}
@@ -134,7 +134,7 @@ function Shop() {
                     <ProductCard
                       key={product.id}
                       productID={product.id}
-                      image={product.images[0]}
+                      image={product.thumbnail}
                       title={product.title}
                       price={product.price}
                     />

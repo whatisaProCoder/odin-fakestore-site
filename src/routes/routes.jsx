@@ -16,7 +16,7 @@ export const routes = [
       { path: "shop/:category?", element: <Shop /> },
       { path: "cart", element: <Cart /> },
       { path: "wishlist", element: <Wishlist /> },
-      { path: "product/:id", element: <Product /> },
+      { path: "product/:productID", element: <Product /> },
       { path: "search", element: <Search /> },
       { path: "*", element: <Error /> },
     ],
