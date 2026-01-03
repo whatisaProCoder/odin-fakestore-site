@@ -127,7 +127,7 @@ function Cart() {
       {checkoutMsg != "" && (
         <div
           key={checkoutMsg}
-          className="fixed bottom-16 fade-in-from-bottom bg-[#1b1d20] p-4 border border-[#32333fb5] rounded-full flex flex-row items-center gap-4 text-xl max-sm:text-sm font-semibold inter"
+          className="fixed bottom-16 fade-in-from-bottom bg-[#1b1d20] p-4 border border-[#32333fb5] rounded-full flex flex-row items-center gap-4 text-xl max-sm:text-sm font-semibold inter drop-shadow-xl"
         >
           <img src={successIcon} className="w-8" />
           {checkoutMsg}

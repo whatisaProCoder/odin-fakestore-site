@@ -21,7 +21,7 @@ function Search() {
         </div>
         {emptyResult && !loading && !error && (
           <div className="mt-36 flex flex-col items-center justify-center">
-            <ErrorPrompt text={`No results for : ${searchKey}`} />
+            <ErrorPrompt text={`No results for "${searchKey}"`} />
           </div>
         )}
         <div>
