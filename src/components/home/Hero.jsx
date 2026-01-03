@@ -4,7 +4,7 @@ import miscExample from "../../assets/images/misc-example.webp";
 import furnitureExample from "../../assets/images/furniture-example.jpg";
 import electronicsExample from "../../assets/images/electronics-example.jpg";
 
-import Carousel from "../common/Carousel";
+import StatelessCarousel from "../common/StatelessCarousel";
 
 import Brand from "./Brand";
 import HeroActionButton from "./HeroActionButton";
@@ -53,7 +53,7 @@ function Hero() {
             />
           </div>
           <Activity mode={isTablet ? "hidden" : "visible"}>
-            <Carousel
+            <StatelessCarousel
               height="20rem"
               width="22rem"
               itemArray={itemArray}

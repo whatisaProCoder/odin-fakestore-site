@@ -1,9 +1,17 @@
 import { useNavigate } from "react-router";
 
-function SimpleProductCard({ productID, image, title, price }) {
+function SimpleProductCard({ productID, image, title, price, scrollToTop }) {
   const navigate = useNavigate();
 
   const handleOpenDetails = () => {
+    if (scrollToTop) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }, 300);
+    }
     navigate(`/product/${productID}`);
   };
 

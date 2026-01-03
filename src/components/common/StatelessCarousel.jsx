@@ -2,7 +2,7 @@ import SlidingLoader from "./SlidingLoader";
 import leftArrowWhite from "../../assets/icons/left-arrow-white.svg";
 import rightArrowWhite from "../../assets/icons/right-arrow-white.svg";
 
-function Carousel({
+function StatelessCarousel({
   itemArray,
   itemIndex,
   setItemIndex,
@@ -59,7 +59,7 @@ function Carousel({
             borderBottomLeftRadius: multipleItems ? "0" : "0.25rem",
             borderBottomRightRadius: multipleItems ? "0" : "0.25rem",
           }}
-          className="fade-in object-cover"
+          className="fade-in object-cover white-bg"
         />
         {multipleItems && (
           <SlidingLoader
@@ -76,4 +76,4 @@ function Carousel({
   );
 }
 
-export default Carousel;
+export default StatelessCarousel;

@@ -1,31 +1,26 @@
 import BackButton from "../components/common/BackButton";
-import Carousel from "../components/common/Carousel";
-import useCarousel from "../hooks/useCarousel";
 import CategoryChip from "../components/shop/CategoryChip";
 import Counter from "../components/common/Counter";
 import AddToCartButton from "../components/common/AddToCartButton";
 import AddToWishlistButton from "../components/common/AddToWishlistButton";
 import useProduct from "../hooks/useProduct";
-
-import img1 from "../assets/images/clothes-example.jpeg";
-import img2 from "../assets/images/electronics-example.jpg";
-import img3 from "../assets/images/misc-example.webp";
+import useProductsByCategory from "../hooks/useProductsByCategory";
 import { useNavigate, useOutletContext, useParams } from "react-router";
+import StatefulCarousel from "../components/common/StatefulCarousel";
+import Loader from "../components/common/Loader";
+import ErrorPrompt from "../components/common/ErrorPrompt";
+import SimpleProductCard from "../components/home/SimpleProductCard";
 
 function Product() {
   const navigate = useNavigate();
 
   const { productID } = useParams();
 
-  console.log(productID);
-
   if (!productID || productID === "") {
     navigate("/error");
   }
 
   const { data: productDataFromAPI, error, loading } = useProduct(productID);
-
-  console.log({ productDataFromAPI, loading, error });
 
   const { dataCollectionHelperMethods } = useOutletContext();
 
@@ -35,27 +30,25 @@ function Product() {
   let addedToWishlist = productData ? productData.addedToWishlist : false;
   let count = productData ? productData.count : 1;
 
-  let productImages = [{ src: img1 }, { src: img2 }, { src: img3 }];
-
   let defaultProductData = null;
 
-  if (!loading & !error & productDataFromAPI) {
-    productImages = productDataFromAPI.images.map((imageURL) => ({
-      src: imageURL,
-    }));
+  let categorySlug = null;
 
+  if (productDataFromAPI) {
     defaultProductData = {
       productID,
       image: productDataFromAPI.thumbnail,
       title: productDataFromAPI.title,
       price: productDataFromAPI.price,
     };
+    categorySlug = productDataFromAPI.category;
   }
 
-  const { itemIndex, setItemIndex } = useCarousel({
-    itemArray: productImages,
-    delay: 1700,
-  });
+  const {
+    data: similarProducts,
+    loading: similarProductsLoading,
+    error: similarProductsError,
+  } = useProductsByCategory({ categorySlug });
 
   const handleWishlistToggle = () => {
     dataCollectionHelperMethods.toggleWishlistState({
@@ -87,17 +80,22 @@ function Product() {
     });
   };
 
+  const handleBackButton = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="py-16 max-sm:py-10 flex flex-row justify-center items-center">
       {!loading && !error && (
         <div className="max-w-350 px-20 max-sm:px-10 w-full">
-          <BackButton />
+          <BackButton onClick={handleBackButton} />
           <div className="mt-10 flex flex-row gap-12 max-xl:flex-col max-sm:gap-8">
             <div className="flex flex-row justify-start w-120 max-xl:justify-center max-xl:w-full">
-              <Carousel
-                itemArray={productImages}
-                itemIndex={itemIndex}
-                setItemIndex={setItemIndex}
+              <StatefulCarousel
+                itemArray={productDataFromAPI.images.map((url) => ({
+                  src: url,
+                }))}
+                delay={1500}
                 height="20rem"
                 width="20rem"
               />
@@ -126,6 +124,7 @@ function Product() {
                     className="max-sm:flex-1"
                     added={addedToCart}
                     onClick={handleAddToCart}
+                    textWhenAdded="Remove from cart"
                   />
                 </div>
                 <AddToWishlistButton
@@ -136,6 +135,43 @@ function Product() {
               </div>
             </div>
           </div>
+          <div className="mt-16 poppins text-xl font-semibold max-sm:text-md">
+            Similar Products
+          </div>
+          {!similarProductsLoading && !similarProductsError && (
+            <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
+              {similarProducts.products.slice(0, 4).map((product) => (
+                <SimpleProductCard
+                  key={product.id}
+                  productID={product.id}
+                  image={product.thumbnail}
+                  title={product.title}
+                  price={product.price}
+                  scrollToTop={true}
+                />
+              ))}
+            </div>
+          )}
+          {similarProductsLoading && (
+            <div className="mt-36 flex flex-col items-center justify-center">
+              <Loader text="Loading..." />
+            </div>
+          )}
+          {!similarProductsLoading && similarProductsError && (
+            <div className="mt-36 flex flex-col items-center justify-center">
+              <ErrorPrompt text="Could not load similar products" />
+            </div>
+          )}
+        </div>
+      )}
+      {loading && (
+        <div className="mt-36 flex flex-col items-center justify-center">
+          <Loader text="Loading the product details..." />
+        </div>
+      )}
+      {!loading && error && (
+        <div className="mt-36 flex flex-col items-center justify-center">
+          <ErrorPrompt />
         </div>
       )}
     </div>

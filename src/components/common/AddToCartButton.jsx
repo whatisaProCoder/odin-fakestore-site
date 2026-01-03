@@ -1,4 +1,10 @@
-function AddToCartButton({ onClick, className, added }) {
+function AddToCartButton({
+  onClick,
+  className,
+  added,
+  textWhenAdded = "Remove",
+  textWhenNotAdded = "Add to cart",
+}) {
   return (
     <button
       onClick={onClick}
@@ -8,7 +14,7 @@ function AddToCartButton({ onClick, className, added }) {
         " font-medium poppins text-[0.9rem] max-sm:text-[0.85rem] px-3 py-1 rounded-md transition-colors"
       }
     >
-      {added ? "Remove" : "Add to cart"}
+      {added ? textWhenAdded : textWhenNotAdded}
     </button>
   );
 }
