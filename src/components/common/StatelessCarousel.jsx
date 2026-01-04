@@ -48,7 +48,7 @@ function StatelessCarousel({
             borderBottomLeftRadius: multipleItems ? "0" : "0.25rem",
             borderBottomRightRadius: multipleItems ? "0" : "0.25rem",
           }}
-          className="fade-in"
+          className="fade-in object-cover"
         />
         {multipleItems && (
           <SlidingLoader
