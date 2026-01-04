@@ -5,25 +5,13 @@ import rightArrowWhite from "../../assets/icons/right-arrow-white.svg";
 function StatelessCarousel({
   itemArray,
   itemIndex,
-  setItemIndex,
+  nextItem,
+  prevItem,
   className,
   height,
   width,
 }) {
   const multipleItems = itemArray.length > 1;
-
-  const nextItem = () => {
-    setItemIndex((index) => (index + 1) % itemArray.length);
-  };
-  const prevItem = () => {
-    setItemIndex((index) => {
-      if (index == 0) {
-        return itemArray.length - 1;
-      } else {
-        return index - 1;
-      }
-    });
-  };
 
   return (
     <div

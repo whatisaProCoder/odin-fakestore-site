@@ -26,7 +26,10 @@ function Hero() {
     { id: 3, name: "Stationary", src: miscExample },
   ];
 
-  const { itemIndex, setItemIndex } = useCarousel({ itemArray, delay: 1700 });
+  const { itemIndex, nextItem, prevItem } = useCarousel({
+    itemArray,
+    delay: 1700,
+  });
 
   const handleShopNowOnClick = () => {
     navigate("/shop");
@@ -58,7 +61,8 @@ function Hero() {
               width="22rem"
               itemArray={itemArray}
               itemIndex={itemIndex}
-              setItemIndex={setItemIndex}
+              nextItem={nextItem}
+              prevItem={prevItem}
               delay={1700}
             />
           </Activity>

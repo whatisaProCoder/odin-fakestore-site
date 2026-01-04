@@ -7,6 +7,7 @@ const useProduct = (id) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setTimeout(() => setLoading(true), 10)
     DummyJSON().getProductByID(id)
       .then((response) => setData(response))
       .catch((error) => setError(error))

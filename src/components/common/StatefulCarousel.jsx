@@ -3,23 +3,23 @@ import leftArrowWhite from "../../assets/icons/left-arrow-white.svg";
 import rightArrowWhite from "../../assets/icons/right-arrow-white.svg";
 import useCarousel from "../../hooks/useCarousel";
 
-function StatefulCarousel({ itemArray, delay, className, height, width }) {
-  const { itemIndex, setItemIndex } = useCarousel({ itemArray, delay });
+function StatefulCarousel({
+  itemArray,
+  delay,
+  className,
+  height,
+  width,
+  slideshow = true,
+}) {
+  const { itemIndex, prevItem, nextItem } = useCarousel({
+    itemArray,
+    delay,
+    slideshow,
+  });
 
-  const multipleItems = itemArray.length > 1;
+  const numberOfItems = itemArray.length;
 
-  const nextItem = () => {
-    setItemIndex((index) => (index + 1) % itemArray.length);
-  };
-  const prevItem = () => {
-    setItemIndex((index) => {
-      if (index == 0) {
-        return itemArray.length - 1;
-      } else {
-        return index - 1;
-      }
-    });
-  };
+  const multipleItems = numberOfItems > 1;
 
   return (
     <div
@@ -52,12 +52,29 @@ function StatefulCarousel({ itemArray, delay, className, height, width }) {
           style={{
             height,
             width,
-            borderBottomLeftRadius: multipleItems ? "0" : "0.25rem",
-            borderBottomRightRadius: multipleItems ? "0" : "0.25rem",
+            borderBottomLeftRadius:
+              multipleItems && itemArray[itemIndex].name ? "0" : "0.25rem",
+            borderBottomRightRadius:
+              multipleItems && itemArray[itemIndex].name ? "0" : "0.25rem",
           }}
           className="fade-in object-cover white-bg"
         />
-        {multipleItems && (
+        {!itemArray[itemIndex].name && multipleItems && (
+          <div className="absolute bottom-2 left-0 right-0 mt-2 flex flex-row justify-center items-center">
+            <div className="flex flex-row gap-2 bg-[#1b1d2041] backdrop-blur-md p-1.5 rounded-full">
+              {itemArray.map((item, index) => (
+                <div
+                  className="w-2.5 max-sm:w-2 aspect-square rounded-full transition-colors"
+                  style={{
+                    backgroundColor:
+                      index === itemIndex ? "#2573E9" : "rgba(0,0,0,0.3)",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        {multipleItems && itemArray[itemIndex].name && (
           <SlidingLoader
             percentage={`${(itemIndex / (itemArray.length - 1)) * 100}%`}
           />
@@ -65,7 +82,7 @@ function StatefulCarousel({ itemArray, delay, className, height, width }) {
       </div>
       {itemArray[itemIndex].name && (
         <div key={itemIndex} className="mt-2 text-center inter fade-in-fast">
-          {itemArray[itemIndex].name}
+          {itemArray[itemIndex].name ?? `${itemIndex + 1} of ${numberOfItems}`}
         </div>
       )}
     </div>

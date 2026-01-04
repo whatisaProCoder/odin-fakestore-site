@@ -3,6 +3,7 @@ import Counter from "../common/Counter";
 import heartOutlineIcon from "../../assets/icons/heart-outline-icon.svg";
 import heartIcon from "../../assets/icons/heart-icon.svg";
 import AddToCartButton from "../common/AddToCartButton";
+import LazyImage from "../common/LazyImage";
 
 function ProductCard({ productID, image, title, price }) {
   const navigate = useNavigate();
@@ -54,9 +55,10 @@ function ProductCard({ productID, image, title, price }) {
   return (
     <div className="fade-in bg-[#1b1d20] flex flex-col p-2 border border-[#32333fb5] rounded-md max-sm:rounded-xl transition-all duration-300 hover:drop-shadow-xl hover:-translate-y-1">
       <div className="flex-1 flex flex-col">
-        <img
+        <LazyImage
           onClick={handleOpenDetails}
           src={image}
+          alt="Product Image"
           className="rounded-xs max-sm:rounded-md bg-[rgba(255,255,255,0.87)] aspect-square"
         />
         <div className="flex-1 flex flex-col gap-4 p-3">

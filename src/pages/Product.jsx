@@ -98,6 +98,7 @@ function Product() {
                 delay={2000}
                 height="20rem"
                 width="20rem"
+                slideshow={false}
               />
             </div>
             <div className="flex flex-col max-w-[68%] max-xl:max-w-full">

@@ -9,6 +9,7 @@ const useProductsByCategory = ({ categorySlug, pageNumber = 1 }) => {
 
   useEffect(() => {
     if (!categorySlug) return
+    setTimeout(() => setLoading(true), 10)
     if (categorySlug === "all")
       DummyJSON().getProductsByPage(pageNumber)
         .then(response => setData({ total: response.total, products: filterProductByException(response.products) }))

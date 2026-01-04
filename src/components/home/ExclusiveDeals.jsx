@@ -13,10 +13,9 @@ function ExclusiveDeals() {
         <div className="poppins text-xl font-semibold max-sm:text-md">
           Exclusive Deals
         </div>
-        <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
-          {!loading &&
-            !error &&
-            data.map((product) => {
+        {!loading && !error && (
+          <div className="mt-10 mb-5 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
+            {data.map((product) => {
               return (
                 <SimpleProductCard
                   key={product.id}
@@ -27,17 +26,18 @@ function ExclusiveDeals() {
                 />
               );
             })}
-          {loading && (
-            <div className="mt-10 flex flex-col items-center justify-center">
-              <Loader text="Loading the products..." />
-            </div>
-          )}
-          {!loading && error && (
-            <div className="mt-10 flex flex-col items-center justify-center">
-              <ErrorPrompt />
-            </div>
-          )}
-        </div>
+          </div>
+        )}
+        {loading && (
+          <div className="mt-10 flex flex-col items-center justify-center">
+            <Loader text="Loading the products..." />
+          </div>
+        )}
+        {!loading && error && (
+          <div className="mt-10 flex flex-col items-center justify-center">
+            <ErrorPrompt />
+          </div>
+        )}
       </div>
     </div>
   );
