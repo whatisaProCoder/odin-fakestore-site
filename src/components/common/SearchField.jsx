@@ -18,7 +18,7 @@ function SearchField({ value, onChange, trigger }) {
 
   return (
     <div
-      className="w-70 max-md:w-full flex flex-row items-center border border-[#3d3e49d0] rounded-md max-sm:rounded-full bg-[#22262db4] overflow-hidden"
+      className="w-70 max-md:w-full max-sm:p-0.5 flex flex-row items-center border border-[#3d3e49d0] rounded-md max-sm:rounded-full bg-[#22262db4] overflow-hidden"
       style={{
         marginLeft: isPhone ? "0" : "0.5rem",
       }}
@@ -35,9 +35,9 @@ function SearchField({ value, onChange, trigger }) {
       />
       <button
         onClick={trigger}
-        className="bg-[#32333f] h-10 w-12 pl-0.5 flex flex-row justify-center items-center transition-colors hover:bg-[#3d3e49d0]"
+        className="bg-[#32333f] h-10 w-12 pl-0.5 max-md:bg-transparent max-md:border-l max-md:border-[#3d3e49d0] flex flex-row justify-center items-center transition-colors hover:bg-[#3d3e49d0]"
       >
-        <img src={searchIcon} className="h-5" />
+        <img src={searchIcon} className="h-5 max-md:opacity-60" />
       </button>
     </div>
   );

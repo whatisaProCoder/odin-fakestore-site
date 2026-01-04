@@ -20,7 +20,7 @@ function NavBar({ numberOfProductsInCart }) {
 
   return (
     <div
-      className="flex flex-row"
+      className="flex flex-row max"
       style={{ gap: isSmallPhone ? "1.75rem" : "1.5rem" }}
     >
       <NavItem active={checkAgainst("home")} onClick={() => navigate("/")}>
