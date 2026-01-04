@@ -35,9 +35,12 @@ function SearchField({ value, onChange, trigger }) {
       />
       <button
         onClick={trigger}
-        className="bg-[#32333f] h-10 w-12 pl-0.5 max-md:bg-transparent max-md:border-l max-md:border-[#3d3e49d0] flex flex-row justify-center items-center transition-colors hover:bg-[#3d3e49d0]"
+        className="bg-[#32333f] h-10 w-12 pl-0.5 max-md:bg-transparent max-md:border-l max-md:border-[#3d3e49d0] flex flex-row justify-center items-center transition-colors sm:hover:bg-[#3d3e49d0]"
       >
-        <img src={searchIcon} className="h-5 max-md:opacity-60" />
+        <img
+          src={searchIcon}
+          className="h-5 max-md:opacity-60 max-sm:hover:opacity-80 max-sm:active:opacity-40"
+        />
       </button>
     </div>
   );
