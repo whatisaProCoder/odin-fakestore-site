@@ -10,6 +10,7 @@ import StatefulCarousel from "../components/common/StatefulCarousel";
 import Loader from "../components/common/Loader";
 import ErrorPrompt from "../components/common/ErrorPrompt";
 import SimpleProductCard from "../components/home/SimpleProductCard";
+import { useEffect } from "react";
 
 function Product() {
   const navigate = useNavigate();
@@ -83,6 +84,13 @@ function Product() {
   const handleBackButton = () => {
     navigate(-1);
   };
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [productID]);
 
   return (
     <div className="py-16 max-sm:py-10 flex flex-row justify-center items-center">

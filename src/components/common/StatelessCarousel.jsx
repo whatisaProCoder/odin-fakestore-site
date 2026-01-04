@@ -1,6 +1,7 @@
 import SlidingLoader from "./SlidingLoader";
 import leftArrowWhite from "../../assets/icons/left-arrow-white.svg";
 import rightArrowWhite from "../../assets/icons/right-arrow-white.svg";
+import LazyImage from "./LazyImage";
 
 function StatelessCarousel({
   itemArray,
@@ -38,7 +39,7 @@ function StatelessCarousel({
             </button>
           </div>
         )}
-        <img
+        <LazyImage
           key={itemIndex}
           src={itemArray[itemIndex].src}
           style={{
