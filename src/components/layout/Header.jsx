@@ -34,7 +34,10 @@ function Header({ numberOfProductsInCart }) {
     >
       <div
         className="flex items-center gap-4"
-        style={{ flexDirection: isPhone ? "column" : "row" }}
+        style={{
+          flexDirection: isPhone ? "column" : "row",
+          width: isPhone ? "100%" : "",
+        }}
       >
         <Brand fontSize={isPhone ? "1.5rem" : "1.25rem"} />
         <SearchField

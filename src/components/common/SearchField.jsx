@@ -18,7 +18,7 @@ function SearchField({ value, onChange, trigger }) {
 
   return (
     <div
-      className="flex flex-row items-center border-2 border-[#3d3e49d0] rounded-[1.25rem] bg-[#22262d] overflow-hidden"
+      className="w-70 max-md:w-full flex flex-row items-center border border-[#3d3e49d0] rounded-md max-sm:rounded-full bg-[#22262db4] overflow-hidden"
       style={{
         marginLeft: isPhone ? "0" : "0.5rem",
       }}
@@ -30,7 +30,7 @@ function SearchField({ value, onChange, trigger }) {
         value={value}
         onChange={onChange}
         onKeyDown={handleEnterKeyEvent}
-        className="inter outline-0 w-60 text-[1rem] px-3"
+        className="inter outline-0 flex-1 text-[1rem] pl-4"
         style={{ width: isPhone ? "18rem" : "15rem" }}
       />
       <button
