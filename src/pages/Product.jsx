@@ -107,7 +107,7 @@ function Product() {
                 </div>
                 <div className="flex flex-row gap-4 max-sm:gap-3">
                   {productDataFromAPI.tags.map((tag) => (
-                    <CategoryChip text={tag} active={true} />
+                    <CategoryChip key={tag} text={tag} active={true} />
                   ))}
                 </div>
               </div>
