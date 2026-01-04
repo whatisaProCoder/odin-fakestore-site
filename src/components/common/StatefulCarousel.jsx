@@ -67,7 +67,9 @@ function StatefulCarousel({
                   className="w-2.5 max-sm:w-2 aspect-square rounded-full transition-colors"
                   style={{
                     backgroundColor:
-                      index === itemIndex ? "#2573E9" : "rgba(0,0,0,0.3)",
+                      index === itemIndex
+                        ? "rgba(255,255,255,0.87)"
+                        : "rgba(0,0,0,0.25)",
                   }}
                 />
               ))}
