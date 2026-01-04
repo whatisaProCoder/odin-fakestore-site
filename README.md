@@ -1,4 +1,4 @@
-# Odin Fakestore Site
+# Fakestore E-Commerce Site
 
 ![Showcase](./public/showcase.png)
 
