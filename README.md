@@ -1,5 +1,7 @@
 # Odin Fakestore Site
 
+![Showcase](./public/showcase.png)
+
 > **Note on Development**: This project was hand-coded, not vibe-coded. Every component, hook, and utility was thoughtfully implemented through deliberate learning and problem-solving. While AI was occasionally consulted to debug specific issues or search for JavaScript methods, the architecture, logic, and implementation are the result of hands-on coding. In an age of AI-generated code, this represents genuine learning through building.
 
 ## Overview
