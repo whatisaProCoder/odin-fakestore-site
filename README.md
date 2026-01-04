@@ -228,6 +228,10 @@ Data fetching hooks implement loading and error states:
 - **SearchField**: Input with search icon and submit handling
 - **Counter**: Quantity selector with increment/decrement controls
 
+**Media Components**
+
+- **LazyImage**: Lazy-loaded image component with loading shimmer effect and error fallback; fetches images to check availability before rendering; displays shimmer placeholder during load and error icon on failure
+
 **Feedback Components**
 
 - **Loader**: Full-page loading indicator with spinner
