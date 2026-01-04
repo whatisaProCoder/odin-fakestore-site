@@ -101,14 +101,15 @@ function Product() {
               />
             </div>
             <div className="flex flex-col max-w-[68%] max-xl:max-w-full">
-              <div className="flex flex-row items-center gap-4 flex-wrap">
+              <div className="flex flex-row items-center gap-4 max-sm:gap-3 flex-wrap">
                 <div className="poppins font-semibold text-xl max-sm:text-[1rem] max-sm">
                   {productDataFromAPI.title}
                 </div>
-                <CategoryChip
-                  text={productDataFromAPI.category}
-                  active={true}
-                />
+                <div className="flex flex-row gap-4 max-sm:gap-3">
+                  {productDataFromAPI.tags.map((tag) => (
+                    <CategoryChip text={tag} active={true} />
+                  ))}
+                </div>
               </div>
               <div className="mt-4 inter max-sm:text-sm text-justify">
                 {productDataFromAPI.description}
