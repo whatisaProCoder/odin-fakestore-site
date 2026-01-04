@@ -234,10 +234,10 @@ Data fetching hooks implement loading and error states:
 
 **Feedback Components**
 
-- **Loader**: Full-page loading indicator with spinner
+- **Loader**: Loading indicator with spinner and text
 - **SlidingLoader**: Progress bar loader
 - **Spinner**: Spinning loader icon
-- **ErrorPrompt**: Error message display with retry functionality
+- **ErrorPrompt**: Error message display
 
 **Product Components**
 
