@@ -58,7 +58,7 @@ function StatefulCarousel({
             borderBottomRightRadius:
               multipleItems && itemArray[itemIndex].name ? "0" : "0.25rem",
           }}
-          className="fade-in object-cover white-bg"
+          className="bg-[rgba(255,255,255,0.87)]"
         />
         {!itemArray[itemIndex].name && multipleItems && (
           <div className="absolute bottom-2 left-0 right-0 mt-2 flex flex-row justify-center items-center">

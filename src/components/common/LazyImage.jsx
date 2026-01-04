@@ -18,7 +18,11 @@ function LazyImage({ className, src, alt, onClick, style }) {
       style={style}
     >
       {!loading && !error && (
-        <img src={src} alt={alt} className="w-full h-full" />
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover fade-in-slow"
+        />
       )}
       {loading && !error && (
         <div className="h-full w-full shimmer bg-[#b2b2b2] infinite" />
