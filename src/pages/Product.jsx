@@ -98,7 +98,7 @@ function Product() {
         <div className="max-w-350 px-20 max-sm:px-10 w-full">
           <BackButton onClick={handleBackButton} />
           <div className="mt-10 flex flex-row gap-12 max-xl:flex-col max-sm:gap-8">
-            <div className="flex flex-row justify-start w-120 max-xl:justify-center max-xl:w-full">
+            <div className="flex flex-row justify-start max-xl:justify-center max-xl:w-full">
               <StatefulCarousel
                 itemArray={productDataFromAPI.images.map((url) => ({
                   src: url,
@@ -109,7 +109,7 @@ function Product() {
                 slideshow={false}
               />
             </div>
-            <div className="flex flex-col max-w-[68%] max-xl:max-w-full">
+            <div className="flex flex-col max-w-[68%] max-xl:max-w-full xl:flex-1">
               <div className="flex flex-row items-center gap-4 max-sm:gap-3 flex-wrap">
                 <div className="poppins font-semibold text-xl max-sm:text-[1rem] max-sm">
                   {productDataFromAPI.title}
